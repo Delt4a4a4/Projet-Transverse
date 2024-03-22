@@ -1,5 +1,5 @@
 import pygame
-import Panier
+from Panier import Panier
 import numpy as np
 
 class Ballon(pygame.sprite.Sprite):
