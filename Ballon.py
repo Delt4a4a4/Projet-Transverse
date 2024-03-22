@@ -92,7 +92,7 @@ class Fleche(pygame.sprite.Sprite):
         self.rect.y = Ballon.rect.y
         self.image = pygame.image.load("chemin")
         self.image = pygame.transform.scale(self.image, (?, ?))  # taille de l'image du ballon à remplir
-        self.rect = self.image.get_rect()
+        self.rect = self.image.get_rect()k
         self.angle_de_tir = Ballon.angle_de_tir
         self.origin_image = self.image
 
