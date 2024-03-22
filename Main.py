@@ -21,8 +21,14 @@ elif Fondecran.niveau == 2 :
 else :
     background = pygame.image.load("chemin")
 
+running = True
+
 Welcome_logo = pygame.image.load("chemin")
 start_button = pygame.image.load("chemin")
 start_button_rect = start_button.get_rect()
 start_button_rect.x = math.ceil(screen.get_width() / 3.33)
 start_button_rect.y = math.ceil(screen.get_height() / 2)
+
+while running:
+
+    screen.blit(background, (0, 0))
