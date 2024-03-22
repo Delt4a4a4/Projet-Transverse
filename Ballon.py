@@ -1,4 +1,5 @@
 import pygame
+import Panier
 import numpy as np
 
 class Ballon(pygame.sprite.Sprite):
@@ -81,7 +82,7 @@ class Ballon(pygame.sprite.Sprite):
     def panier (self,):
         if self.rect.x - Panier.rect.x < 5 and self.rect.x - Panier.rect.x > -5 and self.rect.y - Panier.rect.y < 5 and self.rect.y - Panier.rect.y > -5:
             self.kill()
-            self.Game.score +=1
+            self.Game.score += 1
 
 '''creation d'une classe Fleche 
 '''
@@ -92,7 +93,7 @@ class Fleche(pygame.sprite.Sprite):
         self.rect.y = Ballon.rect.y
         self.image = pygame.image.load("chemin")
         self.image = pygame.transform.scale(self.image, (?, ?))  # taille de l'image du ballon à remplir
-        self.rect = self.image.get_rect()k
+        self.rect = self.image.get_rect()
         self.angle_de_tir = Ballon.angle_de_tir
         self.origin_image = self.image
 

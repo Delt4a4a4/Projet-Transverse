@@ -1,6 +1,6 @@
 import pygame
 
-class Ballon(pygame.sprite.Sprite):
+class Panier(pygame.sprite.Sprite):
     def __init__(self,Game):
         super().__init__()
         # Paramètres du ballon
