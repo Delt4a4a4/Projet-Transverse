@@ -1,15 +1,15 @@
 import pygame
 
 class Fondecran(pygame.sprite.Sprite):
-    def __init__(self, game,  x):
+    def __init__(self, game):
         pygame.sprite.Sprite.__init__(self)
         self.niveau = 0
-        self.image = pygame.image.load('chemin')
+        self.image = pygame.image.load('Image/EcJikeZU8AA42Jq.jpg')
 
 
     def change_background(self):
         if self.niveau == 0:
-            self.image = pygame.image.load("chemin du 1e background")
+            self.image = pygame.image.load("Image/EcJikeZU8AA42Jq.jpg")
         elif self.niveau == 1:
             self.image = pygame.image.load("chemin du 2e background")
         elif self.niveau == 2:

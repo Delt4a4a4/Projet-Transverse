@@ -1,13 +1,14 @@
 import pygame
-
+import Background
 import Panier
-import Ballon
+from Ballon import Ballon
 class Game:
     def __init__(self):
         self.is_playing= False
         self.pressed = {}
         # score
         self.score = 0
+        self.ballon = Ballon(self)
 
     # fait apparraitre les "stats"
     def update(self, screen):
