@@ -1,5 +1,7 @@
 import pygame
 import math
+import Game
+
 pygame.init()
 from Ballon import Ballon
 from Panier import Panier
@@ -28,8 +30,13 @@ start_button = pygame.image.load("chemin")
 start_button_rect = start_button.get_rect()
 start_button_rect.x = math.ceil(screen.get_width() / 3.33)
 start_button_rect.y = math.ceil(screen.get_height() / 2)
+game = Game()
 
 while running:
 
     screen.blit(background, (0, 0))
     screen.blit(game.Ballon.image, game.Joueur.rect)
+
+    if game.is_playing:
+        # déclencher les instructions du jeu
+        game.update(screen)
