@@ -6,13 +6,16 @@ class Ballon(pygame.sprite.Sprite):
     def __init__(self,Game):
         super().__init__()
         # Paramètres du ballon
-        self.rect.x = 100    # meme valeur que hauteur_initiale
-        self.rect.y = 100    # meme valeur que hauteur_initiale
-        self.y_position_initiale = 100  #changer pour mettre la position du ballon au départ
-        self.x_position_initiale = 100  #changer pour mettre la position du ballon au départ
         self.image = pygame.image.load("Image/Ballon.png")
         self.image = pygame.transform.scale(self.image, (100, 100))  # taille de l'image du ballon à remplir
         self.rect = self.image.get_rect()
+        self.rect.x = 100   # meme valeur que hauteur_initiale
+        self.rect.y = 500   # meme valeur que hauteur_initiale
+        self.y_position_initiale = 100  #changer pour mettre la position du ballon au départ
+        self.x_position_initiale = 100  #changer pour mettre la position du ballon au départ
+
+
+
         self.vitesse_initiale = 20
         self.angle_de_tir = 45
 
@@ -64,9 +67,9 @@ class Ballon(pygame.sprite.Sprite):
         v0x = self.vitesse_initiale * np.cos(angle)
         v0y = self.vitesse_initiale * np.sin(angle)
         temps = np.arange(0, self.temps_total_tir,self.intervalle_temps)  # donne la position du ballon tout les "intervalles_temps" sur "temps total"
-        """for i in temps:"""
-        self.rect.x = int(self.x_position_initiale + v0x * temps)
-        self.rect.y = int(self.y_position_initiale + v0y * temps - 0.5 * 9.8 * temps ** 2)
+        for i in temps:
+            self.rect.x = int(self.x_position_initiale + v0x * i)
+            self.rect.y = int(self.y_position_initiale + v0y * i - 0.5 * 9.8 * i ** 2)
 
 
 

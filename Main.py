@@ -52,3 +52,8 @@ while running:
         if action.type == pygame.QUIT:
             running = False
             pygame.quit()
+        elif action.type == pygame.KEYDOWN:
+            game.pressed[action.key] = True
+            if action.key == pygame.K_SPACE :
+                game.ballon.deplacement()
+                print ("TIRE!")
