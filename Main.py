@@ -32,3 +32,4 @@ start_button_rect.y = math.ceil(screen.get_height() / 2)
 while running:
 
     screen.blit(background, (0, 0))
+    screen.blit(game.Ballon.image, game.Joueur.rect)
