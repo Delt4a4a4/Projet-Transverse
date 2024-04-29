@@ -35,7 +35,7 @@ game = Game()
 while running:
 
     screen.blit(background, (0, 0))
-    screen.blit(game.Ballon.image, game.Joueur.rect)
+    screen.blit(game.Ballon.image, game.Ballon.rect)
 
     if game.is_playing:
         # déclencher les instructions du jeu

@@ -65,8 +65,8 @@ class Ballon(pygame.sprite.Sprite):
         v0y = self.vitesse_initiale * np.sin(angle)
         temps = np.arange(0, self.temps_total_tir,self.intervalle_temps)  # donne la position du ballon tout les "intervalles_temps" sur "temps total"
         """for i in temps:"""
-            self.rect.x = int(self.x_position_initiale + v0x * temps)
-            self.rect.y = int(self.y_position_initiale + v0y * temps - 0.5 * 9.8 * temps ** 2)
+        self.rect.x = int(self.x_position_initiale + v0x * temps)
+        self.rect.y = int(self.y_position_initiale + v0y * temps - 0.5 * 9.8 * temps ** 2)
 
 
 
@@ -83,6 +83,7 @@ class Ballon(pygame.sprite.Sprite):
         if self.rect.x - Panier.rect.x < 5 and self.rect.x - Panier.rect.x > -5 and self.rect.y - Panier.rect.y < 5 and self.rect.y - Panier.rect.y > -5:
             self.kill()
             self.Game.score += 1
+
 
 '''creation d'une classe Fleche 
 '''
