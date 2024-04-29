@@ -10,8 +10,8 @@ class Ballon(pygame.sprite.Sprite):
         self.rect.y = 100    # meme valeur que hauteur_initiale
         self.y_position_initiale = 100  #changer pour mettre la position du ballon au départ
         self.x_position_initiale = 100  #changer pour mettre la position du ballon au départ
-        self.image = pygame.image.load("chemin")
-        self.image = pygame.transform.scale(self.image, (?, ?))  # taille de l'image du ballon à remplir
+        self.image = pygame.image.load("Image/Ballon.png")
+        self.image = pygame.transform.scale(self.image, (100, 100))  # taille de l'image du ballon à remplir
         self.rect = self.image.get_rect()
         self.vitesse_initiale = 20
         self.angle_de_tir = 45
@@ -92,8 +92,8 @@ class Fleche(pygame.sprite.Sprite):
         super().__init__()
         self.rect.x = Ballon.rect.x
         self.rect.y = Ballon.rect.y
-        self.image = pygame.image.load("chemin")
-        self.image = pygame.transform.scale(self.image, (?, ?))  # taille de l'image du ballon à remplir
+        self.image = pygame.image.load("Image/Flèche.png")
+        self.image = pygame.transform.scale(self.image, (100, 100))  # taille de l'image du ballon à remplir
         self.rect = self.image.get_rect()
         self.angle_de_tir = Ballon.angle_de_tir
         self.origin_image = self.image

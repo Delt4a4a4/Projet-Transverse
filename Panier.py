@@ -7,8 +7,8 @@ class Panier(pygame.sprite.Sprite):
         # Paramètres du ballon
         self.rect.x = random.randint(100,1000)
         self.rect.y = 100    # changer pour mettre la position du panier
-        self.image = pygame.image.load("chemin")
-        self.image = pygame.transform.scale(self.image, (?, ?))  # taille de l'image du ballon à remplir
+        self.image = pygame.image.load("Image/Ballon.png")
+        self.image = pygame.transform.scale(self.image, (100, 100))  # taille de l'image du ballon à remplir
         self.rect = self.image.get_rect()
 
     def spawn_panier(self):

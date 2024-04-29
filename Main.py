@@ -40,3 +40,10 @@ while running:
     if game.is_playing:
         # déclencher les instructions du jeu
         game.update(screen)
+        Panier.spawn_panier(Panier)
+
+    for action in pygame.event.get():
+        # fermeture de la fenetre
+        if action.type == pygame.QUIT:
+            running = False
+            pygame.quit()
