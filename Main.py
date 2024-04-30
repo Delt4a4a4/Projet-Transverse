@@ -98,6 +98,30 @@ def menu2():
                 if event.key == pygame.K_SPACE:
                     ballon.deplacement(window,panier_group,game)
                     print("TIRE!")
+                if event.key == pygame.K_z:
+                    game.puissance_game +=1
+                    game.score_affichage(window)
+                    ballon.vitesse_initiale = game.puissance_game
+                    print("up puissance")
+                    print(game.puissance_game)
+                if event.key == pygame.K_s:
+                    game.puissance_game -=1
+                    game.score_affichage(window)
+                    ballon.vitesse_initiale =game.puissance_game
+                    print("down puissance")
+                    print(game.puissance_game)
+                if event.key == pygame.K_q:
+                    game.angle_de_tir_game +=1
+                    game.score_affichage(window)
+                    ballon.angle_de_tir = game.angle_de_tir_game
+                    print("up angle de tir")
+                    print(game.angle_de_tir_game)
+                if event.key == pygame.K_d:
+                    game.angle_de_tir_game -=1
+                    game.score_affichage(window)
+                    ballon.angle_de_tir = game.angle_de_tir_game
+                    print("down angle de tir")
+                    print(game.angle_de_tir_game)
         balloon_group.draw(window) ##
         pygame.display.update()
 
