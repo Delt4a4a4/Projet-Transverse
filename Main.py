@@ -14,6 +14,8 @@ pygame_icon = pygame.image.load("Image/Ballon.png")
 pygame.display.set_icon(pygame_icon)
 font = pygame.font.SysFont('Helvetica', 20)
 ballon = Ballon(game)
+balloon_group = pygame.sprite.Group()  # Créez un groupe de sprites
+panier_group = pygame.sprite.Group()
 def background(lien, pos_x, pos_y):
     fond = pygame.image.load(lien)
     fond = fond.convert_alpha()
@@ -49,7 +51,9 @@ def menu2():
     map3_bouton = pygame.draw.rect(window, (255, 0, 0), pygame.Rect(285, 260, 225, 125))
     quit_bouton = pygame.draw.rect(window, (255, 0, 0), pygame.Rect(725, 0, 75, 80))
     background("Image/menu2.png", 0, 0)
+
     while run:
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
@@ -60,6 +64,7 @@ def menu2():
                 elif not button_clicked[0] and map1_bouton.collidepoint(pygame.mouse.get_pos()):
                     map1()  # Appeler map1 sans créer de nouveau ballon
                     button_clicked[0] = True  # Mettre à jour le drapeau du bouton 1
+
                 elif not button_clicked[0] and map2_bouton.collidepoint(pygame.mouse.get_pos()):
                     map2()
                     button_clicked[0] = True  # Mettre à jour le drapeau du bouton 2
@@ -71,18 +76,25 @@ def menu2():
                 if event.key == pygame.K_SPACE:
                     ballon.deplacement(window)
                     print("TIRE!")
-
+        balloon_group.draw(window) ##
         pygame.display.update()
 
 def map1():
     background("Image/terrain2.png", 0, 0)
     panier = Panier(game)
+    game.score_affichage(window)
 
-    ballon.panier()
+    ballon.gravity = -9.8
     Panier.spawn_panier(panier)
-    window.blit(panier.image, panier.rect)
-    window.blit(game.ballon.image, game.ballon.rect)
+    panier_group.add(panier)
+    panier_group.draw(window)
+    balloon_group.add(ballon)
 
+    '''collisions = pygame.sprite.groupcollide(balloon_group, panier_group, True, False)
+    if collisions == True:
+        balloon_group.kill()
+        print("score !")
+        game.score+=1'''
 
 def map2():
     background("Image/terrain2.png", 0, 0)

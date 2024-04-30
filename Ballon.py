@@ -7,16 +7,18 @@ class Ballon(pygame.sprite.Sprite):
         super().__init__()
         # Paramètres du ballon
         self.image = pygame.image.load("Image/Ballon.png")
-        self.image = pygame.transform.scale(self.image, (10, 10))  # taille de l'image du ballon à remplir
+        self.image = pygame.transform.scale(self.image, (100, 100))  # taille de l'image du ballon à remplir
         self.rect = self.image.get_rect()
         self.rect.x = 100   # meme valeur que hauteur_initiale
         self.rect.y = 100   # meme valeur que hauteur_initiale
         self.y_position_initiale = 100  #changer pour mettre la position du ballon au départ
         self.x_position_initiale = 100  #changer pour mettre la position du ballon au départ
-        self.vitesse_initiale = 60
+        self.vitesse_initiale = 70
         self.angle_de_tir = 330
         self.balloon = pygame.sprite.Group()
         self.balloon.add(self)
+        self.gravity = -9.8
+        self.panier = Panier
         self.x_trajectoire = []
         self.y_trajectoire = []
         '''self.rect.x_trajectoire = 0  # changer pour mettre la position du ballon au départ
@@ -35,21 +37,28 @@ class Ballon(pygame.sprite.Sprite):
         v0y = self.vitesse_initiale * np.sin(angle)
         temps_total = self.temps_total_tir
         intervalle_temps = self.intervalle_temps
-
+        affichage = window.copy()
         for t in np.arange(0, temps_total, intervalle_temps):
             print(t)
             x = int(self.x_position_initiale + v0x * t)
-            y = int(self.y_position_initiale + v0y * t - 0.5 * -9.8 * t ** 2)
+            y = int(self.y_position_initiale + v0y * t - 0.5 * self.gravity * t ** 2)
 
             # Mise à jour de la position du ballon
             self.rect.x = x
             self.rect.y = y
             print("self.rect.x = ",self.rect.x)
             print("self.rect.y = ",self.rect.y)
-            window.fill((0, 0, 0))
+            print("gravité", self.gravity)
+
+            window.blit(affichage, (0, 0))
             self.balloon.draw(window)
             pygame.display.flip()
 
+            if self.rect.x >800  or self.rect.y >500:
+                self.rect.x = 100
+                self.rect.y = 100
+                print("raté !")
+                return 0
 
             clock.tick(60)  # Limite le jeu à 60 images par seconde (FPS)
 
@@ -57,6 +66,10 @@ class Ballon(pygame.sprite.Sprite):
     '''
     def update(self):
         self.deplacement()
+
+    def check_collision(self, sprite, group):
+        return pygame.sprite.spritecollide(sprite, group, False, pygame.sprite.collide_mask)  # sprite, group, dokill,(hitbox)collide
+
 
     '''créer de petit trait pour dire la trajectoire
     '''
@@ -93,10 +106,10 @@ class Ballon(pygame.sprite.Sprite):
     
     "Panier.rect.x", "Panier.rect.y" et "Game.score" sont totalement inventé faudra changer en fonction des autres codes 
     '''
-    def panier (self,):
-        panier = Panier(self)
+    def panier_score (self,panier):
         if abs(self.rect.x - panier.rect.x) < 5 and abs(self.rect.y - panier.rect.y) < 5:
-            self.kill()
+            self.self.rect.x = 100
+            self.rect.y = 100
             self.game.score += 1
 
 
