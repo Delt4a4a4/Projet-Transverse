@@ -3,19 +3,16 @@ from Panier import Panier
 import numpy as np
 
 class Ballon(pygame.sprite.Sprite):
-    def __init__(self,Game):
+    def __init__(self,game):
         super().__init__()
         # Paramètres du ballon
         self.image = pygame.image.load("Image/Ballon.png")
-        self.image = pygame.transform.scale(self.image, (100, 100))  # taille de l'image du ballon à remplir
+        self.image = pygame.transform.scale(self.image, (10, 10))  # taille de l'image du ballon à remplir
         self.rect = self.image.get_rect()
         self.rect.x = 100   # meme valeur que hauteur_initiale
-        self.rect.y = 500   # meme valeur que hauteur_initiale
+        self.rect.y = 100   # meme valeur que hauteur_initiale
         self.y_position_initiale = 100  #changer pour mettre la position du ballon au départ
         self.x_position_initiale = 100  #changer pour mettre la position du ballon au départ
-
-
-
         self.vitesse_initiale = 20
         self.angle_de_tir = 45
 
@@ -61,15 +58,18 @@ class Ballon(pygame.sprite.Sprite):
         '''self.rect.x_trajectoire = int(v0x * temps)
         self.rect.y_trajectoire = int(self.hauteur_initiale + v0y * temps - 0.5 * 9.8 * temps ** 2)'''
 
-
-    def deplacement (self):
+    def deplacement(self):
         angle = np.radians(self.angle_de_tir)
         v0x = self.vitesse_initiale * np.cos(angle)
         v0y = self.vitesse_initiale * np.sin(angle)
-        temps = np.arange(0, self.temps_total_tir,self.intervalle_temps)  # donne la position du ballon tout les "intervalles_temps" sur "temps total"
+        temps = np.arange(0, self.temps_total_tir, self.intervalle_temps)
         for i in temps:
-            self.rect.x = int(self.x_position_initiale + v0x * i)
-            self.rect.y = int(self.y_position_initiale + v0y * i - 0.5 * 9.8 * i ** 2)
+            x = int(self.x_position_initiale + v0x * i)
+            y = int(self.y_position_initiale + v0y * i - 0.5 * 9.8 * i ** 2)
+            self.rect.x = x
+            self.rect.y = y
+            pygame.time.delay(10)  # Ajout d'un délai de 10 millisecondes
+            pygame.display.update()
 
 
 
@@ -83,9 +83,10 @@ class Ballon(pygame.sprite.Sprite):
     "Panier.rect.x", "Panier.rect.y" et "Game.score" sont totalement inventé faudra changer en fonction des autres codes 
     '''
     def panier (self,):
-        if self.rect.x - Panier.rect.x < 5 and self.rect.x - Panier.rect.x > -5 and self.rect.y - Panier.rect.y < 5 and self.rect.y - Panier.rect.y > -5:
+        panier = Panier(self)
+        if abs(self.rect.x - panier.rect.x) < 5 and abs(self.rect.y - panier.rect.y) < 5:
             self.kill()
-            self.Game.score += 1
+            self.game.score += 1
 
 
 '''creation d'une classe Fleche 

@@ -3,16 +3,16 @@ import time
 from Game import Game
 from Panier import Panier
 from Background import Fondecran
+from Ballon import Ballon
 
 pygame.init()
 game = Game()
 fondecran = Fondecran(game)
-
 window = pygame.display.set_mode((800, 500))
 pygame.display.set_caption("SuperBasketBall ver1.22 474 487 139")
 pygame_icon = pygame.image.load("Image/Ballon.png")
 pygame.display.set_icon(pygame_icon)
-font = pygame.font.SysFont('Helvetic', 20)
+font = pygame.font.SysFont('Helvetica', 20)
 
 def background(lien, pos_x, pos_y):
     fond = pygame.image.load(lien)
@@ -24,7 +24,6 @@ def background(lien, pos_x, pos_y):
 def main_menu():
     start_bouton = pygame.draw.circle(window, (255, 0, 0), (400, 250), 30)
     quit_bouton = pygame.draw.rect(window, (255, 0, 0), pygame.Rect(725, 0, 75, 80))
-
     while True:
         background("Image/terrain3.png", 0, 0)
         time.sleep(0.5)
@@ -38,6 +37,7 @@ def main_menu():
                     menu2()
                 elif quit_bouton.collidepoint(pygame.mouse.get_pos()):
                     pygame.quit()
+
         pygame.display.update()
 
 def menu2():
@@ -57,7 +57,7 @@ def menu2():
                 if quit_bouton.collidepoint(pygame.mouse.get_pos()):
                     pygame.quit()
                 elif not button_clicked[0] and map1_bouton.collidepoint(pygame.mouse.get_pos()):
-                    map1()
+                    map1()  # Appeler map1 sans créer de nouveau ballon
                     button_clicked[0] = True  # Mettre à jour le drapeau du bouton 1
                 elif not button_clicked[0] and map2_bouton.collidepoint(pygame.mouse.get_pos()):
                     map2()
@@ -70,14 +70,18 @@ def menu2():
                 if event.key == pygame.K_SPACE:
                     game.ballon.deplacement()
                     print("TIRE!")
+
         pygame.display.update()
 
 def map1():
     background("Image/terrain2.png", 0, 0)
     panier = Panier(game)
+    ballon = Ballon(game)
+    ballon.panier()
     Panier.spawn_panier(panier)
     window.blit(panier.image, panier.rect)
-    window.blit(game.ballon.image, game.ballon.rect)
+    window.blit(ballon.image, ballon.rect)
+
 
 def map2():
     background("Image/terrain2.png", 0, 0)
