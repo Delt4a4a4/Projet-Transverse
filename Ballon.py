@@ -13,8 +13,8 @@ class Ballon(pygame.sprite.Sprite):
         self.rect.y = 100   # meme valeur que hauteur_initiale
         self.y_position_initiale = 100  #changer pour mettre la position du ballon au départ
         self.x_position_initiale = 100  #changer pour mettre la position du ballon au départ
-        self.vitesse_initiale = 50
-        self.angle_de_tir = 90
+        self.vitesse_initiale = 60
+        self.angle_de_tir = 330
         self.balloon = pygame.sprite.Group()
         self.balloon.add(self)
         self.x_trajectoire = []
@@ -38,21 +38,19 @@ class Ballon(pygame.sprite.Sprite):
 
         for t in np.arange(0, temps_total, intervalle_temps):
             print(t)
-            # Calcul des positions x et y à chaque instant t
             x = int(self.x_position_initiale + v0x * t)
-            y = int(self.y_position_initiale + v0y * t - 0.5 * 9.8 * t ** 2)
+            y = int(self.y_position_initiale + v0y * t - 0.5 * -9.8 * t ** 2)
 
             # Mise à jour de la position du ballon
             self.rect.x = x
             self.rect.y = y
             print("self.rect.x = ",self.rect.x)
             print("self.rect.y = ",self.rect.y)
-            # Affichage de la mise à jour sur l'écran
-            window.fill((0, 0, 0))  # Efface l'écran
-            self.balloon.draw(window)  # Redessine tous les sprites sur l'écran
+            window.fill((0, 0, 0))
+            self.balloon.draw(window)
             pygame.display.flip()
 
-            # Utilisation de clock.tick() pour contrôler la vitesse du jeu
+
             clock.tick(60)  # Limite le jeu à 60 images par seconde (FPS)
 
     ''' Mets à jour la trajectoire du ballon à chaque frames
