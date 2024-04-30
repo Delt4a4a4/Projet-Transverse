@@ -7,7 +7,7 @@ class Ballon(pygame.sprite.Sprite):
         super().__init__()
         # Paramètres du ballon
         self.image = pygame.image.load("Image/Ballon.png")
-        self.image = pygame.transform.scale(self.image, (100, 100))  # taille de l'image du ballon à remplir
+        self.image = pygame.transform.scale(self.image, (50, 50))  # taille de l'image du ballon à remplir
         self.rect = self.image.get_rect()
         self.rect.x = 100   # meme valeur que hauteur_initiale
         self.rect.y = 100   # meme valeur que hauteur_initiale
