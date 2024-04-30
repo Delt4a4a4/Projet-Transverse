@@ -29,7 +29,7 @@ class Ballon(pygame.sprite.Sprite):
         self.temps_total_tir = 20
         self.intervalle_temps = 0.01
 
-    def deplacement(self,window):
+    def deplacement(self,window,panier_group,game):
 
         clock = pygame.time.Clock()
         angle = np.radians(self.angle_de_tir)
@@ -55,11 +55,20 @@ class Ballon(pygame.sprite.Sprite):
             pygame.display.flip()
 
             if self.rect.x >800  or self.rect.y >500:
-                self.rect.x = 100
-                self.rect.y = 100
+                window.blit(affichage, (0, 0))
+                self.rect.x = self.x_position_initiale
+                self.rect.y = self.y_position_initiale
                 print("raté !")
                 return 0
-
+            collisions = pygame.sprite.spritecollide(self, panier_group, False)
+            for panier in collisions:
+                game.score += 1
+                window.blit(affichage, (0, 0))
+                self.rect.x = self.x_position_initiale
+                self.rect.y = self.y_position_initiale
+                game.score_affichage(window)
+                print("score !")
+                return 0
             clock.tick(60)  # Limite le jeu à 60 images par seconde (FPS)
 
     ''' Mets à jour la trajectoire du ballon à chaque frames
@@ -108,9 +117,10 @@ class Ballon(pygame.sprite.Sprite):
     '''
     def panier_score (self,panier):
         if abs(self.rect.x - panier.rect.x) < 5 and abs(self.rect.y - panier.rect.y) < 5:
-            self.self.rect.x = 100
+            self.rect.x = 100
             self.rect.y = 100
             self.game.score += 1
+            print("score !")
 
 
 '''creation d'une classe Fleche 

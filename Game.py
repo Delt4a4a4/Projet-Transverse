@@ -15,13 +15,11 @@ class Game:
     # fait apparraitre les "stats"
 
     def score_affichage(self, screen):
-        # font = pygame.font.SysFont("mono" ,16)
-        # argent_text = font.render(f"argent : {self.argent}",1,(0,0,0))
-        # screen.blit(argent_text,(20,20)
+        pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(0, 0, 100, 25))
 
         font = pygame.font.SysFont("lato", 36)
         argent_text = font.render(f"score : {self.score}", 1, (255, 255, 255))
-        screen.blit(argent_text, (50, 20))
+        screen.blit(argent_text, (0, 0))
 
         # afficher la bank du joueur sur l'écran
         font = pygame.font.SysFont("lato", 36)

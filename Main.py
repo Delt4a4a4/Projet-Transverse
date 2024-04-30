@@ -42,6 +42,28 @@ def main_menu():
                     pygame.quit()
 
         pygame.display.update()
+def map1():
+    background("Image/terrain2.png", 0, 0)
+    panier = Panier(game)
+    game.score_affichage(window)
+
+    ballon.gravity = -9.8
+    Panier.spawn_panier(panier)
+    panier_group.add(panier)
+    panier_group.draw(window)
+    balloon_group.add(ballon)
+
+    '''collisions = pygame.sprite.groupcollide(balloon_group, panier_group, True, False)
+    if collisions == True:
+        balloon_group.kill()
+        print("score !")
+        game.score+=1'''
+
+def map2():
+    background("Image/terrain2.png", 0, 0)
+
+def map3():
+    background("Image/terrain2.png", 0, 0)
 
 def menu2():
     run = True
@@ -74,33 +96,11 @@ def menu2():
             elif event.type == pygame.KEYDOWN:
                 game.pressed[event.key] = True
                 if event.key == pygame.K_SPACE:
-                    ballon.deplacement(window)
+                    ballon.deplacement(window,panier_group,game)
                     print("TIRE!")
         balloon_group.draw(window) ##
         pygame.display.update()
 
-def map1():
-    background("Image/terrain2.png", 0, 0)
-    panier = Panier(game)
-    game.score_affichage(window)
-
-    ballon.gravity = -9.8
-    Panier.spawn_panier(panier)
-    panier_group.add(panier)
-    panier_group.draw(window)
-    balloon_group.add(ballon)
-
-    '''collisions = pygame.sprite.groupcollide(balloon_group, panier_group, True, False)
-    if collisions == True:
-        balloon_group.kill()
-        print("score !")
-        game.score+=1'''
-
-def map2():
-    background("Image/terrain2.png", 0, 0)
-
-def map3():
-    background("Image/terrain2.png", 0, 0)
 
 if __name__ == "__main__":
     main_menu()
