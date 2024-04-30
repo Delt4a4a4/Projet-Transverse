@@ -1,59 +1,89 @@
 import pygame
-import math
+import time
 from Game import Game
-import Ballon
-pygame.init()
-from Ballon import Ballon
 from Panier import Panier
 from Background import Fondecran
 
-#pygame_icon = pygame.image.load("chemin")
-pygame.display.set_mode((800,500))
-#pygame.display.set_icon(pygame_icon)
+pygame.init()
 game = Game()
-pygame.display.set_caption("SuperBasketBall ver1.22 474 487 139")
 fondecran = Fondecran(game)
-screen = pygame.display.set_mode((1520,800))
 
-if fondecran.niveau == 0 :
-    background = pygame.image.load("Image/EcJikeZU8AA42Jq.jpg")
-elif fondecran.niveau == 1 :
-    background = pygame.image.load("Image/EcJikeZU8AA42Jq.jpg")
-elif fondecran.niveau == 2 :
-    background = pygame.image.load("Image/EcJikeZU8AA42Jq.jpg")
-else :
-    background = pygame.image.load("Image/EcJikeZU8AA42Jq.jpg")
+window = pygame.display.set_mode((800, 500))
+pygame.display.set_caption("SuperBasketBall ver1.22 474 487 139")
+pygame_icon = pygame.image.load("Image/Ballon.png")
+pygame.display.set_icon(pygame_icon)
+font = pygame.font.SysFont('Helvetic', 20)
 
-running = True
-
-'''Welcome_logo = pygame.image.load("chemin")
-start_button = pygame.image.load("chemin")
-start_button_rect = start_button.get_rect()
-start_button_rect.x = math.ceil(screen.get_width() / 3.33)
-start_button_rect.y = math.ceil(screen.get_height() / 2)'''
-
-
-while running:
-    background = pygame.image.load("Image/EcJikeZU8AA42Jq.jpg")
+def background(lien, pos_x, pos_y):
+    fond = pygame.image.load(lien)
+    fond = fond.convert_alpha()
+    fond = pygame.transform.smoothscale(fond, window.get_size())
+    window.blit(fond, (pos_x, pos_y))
     pygame.display.flip()
-    background=background.convert_alpha()
-    background=pygame.transform.smoothscale(background,screen.get_size())
-    screen.blit(background, (0, 0))
 
-    screen.blit(game.ballon.image, game.ballon.rect)
+def main_menu():
+    start_bouton = pygame.draw.circle(window, (255, 0, 0), (400, 250), 30)
+    quit_bouton = pygame.draw.rect(window, (255, 0, 0), pygame.Rect(725, 0, 75, 80))
 
-    if game.is_playing:
-        # déclencher les instructions du jeu
-        game.update(screen)
-        Panier.spawn_panier(Panier)
+    while True:
+        background("Image/terrain3.png", 0, 0)
+        time.sleep(0.5)
+        background("Image/terrain4.png", 0, 0)
+        time.sleep(0.5)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if start_bouton.collidepoint(pygame.mouse.get_pos()):
+                    menu2()
+                elif quit_bouton.collidepoint(pygame.mouse.get_pos()):
+                    pygame.quit()
+        pygame.display.update()
 
-    for action in pygame.event.get():
-        # fermeture de la fenetre
-        if action.type == pygame.QUIT:
-            running = False
-            pygame.quit()
-        elif action.type == pygame.KEYDOWN:
-            game.pressed[action.key] = True
-            if action.key == pygame.K_SPACE :
-                game.ballon.deplacement()
-                print ("TIRE!")
+def menu2():
+    run = True
+    button_clicked = [False]  # Liste des boutons cliqués
+    map1_bouton = pygame.draw.rect(window, (255, 0, 0), pygame.Rect(70, 100, 225, 125))
+    map2_bouton = pygame.draw.rect(window, (255, 0, 0), pygame.Rect(515, 100, 225, 125))
+    map3_bouton = pygame.draw.rect(window, (255, 0, 0), pygame.Rect(285, 260, 225, 125))
+    quit_bouton = pygame.draw.rect(window, (255, 0, 0), pygame.Rect(725, 0, 75, 80))
+    background("Image/menu2.png", 0, 0)
+    while run:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+                pygame.quit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if quit_bouton.collidepoint(pygame.mouse.get_pos()):
+                    pygame.quit()
+                elif not button_clicked[0] and map1_bouton.collidepoint(pygame.mouse.get_pos()):
+                    map1()
+                    button_clicked[0] = True  # Mettre à jour le drapeau du bouton 1
+                elif not button_clicked[0] and map2_bouton.collidepoint(pygame.mouse.get_pos()):
+                    map2()
+                    button_clicked[0] = True  # Mettre à jour le drapeau du bouton 2
+                elif not button_clicked[0] and map3_bouton.collidepoint(pygame.mouse.get_pos()):
+                    map3()
+                    button_clicked[0] = True  # Mettre à jour le drapeau du bouton 3
+            elif event.type == pygame.KEYDOWN:
+                game.pressed[event.key] = True
+                if event.key == pygame.K_SPACE:
+                    game.ballon.deplacement()
+                    print("TIRE!")
+        pygame.display.update()
+
+def map1():
+    background("Image/terrain2.png", 0, 0)
+    panier = Panier(game)
+    Panier.spawn_panier(panier)
+    window.blit(panier.image, panier.rect)
+    window.blit(game.ballon.image, game.ballon.rect)
+
+def map2():
+    background("Image/terrain2.png", 0, 0)
+
+def map3():
+    background("Image/terrain2.png", 0, 0)
+
+if __name__ == "__main__":
+    main_menu()

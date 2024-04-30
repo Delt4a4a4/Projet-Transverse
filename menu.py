@@ -35,9 +35,9 @@ def main_menu():
 
     while True:
 
-        background("terrain3.png", 0, 0)
+        background("Image/terrain3.png", 0, 0)
         time.sleep(0.5)
-        background("terrain4.png", 0, 0)
+        background("Image/terrain4.png", 0, 0)
         time.sleep(0.5)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -57,7 +57,7 @@ def menu2():
     map2_bouton = pygame.draw.rect(window, (255, 0, 0), pygame.Rect(515, 100, 225, 125))
     map3_bouton = pygame.draw.rect(window, (255, 0, 0), pygame.Rect(285, 260, 225, 125))
     quit_bouton = pygame.draw.rect(window, (255, 0, 0), pygame.Rect(725, 0, 75, 80))
-    background("menu2.png", 0, 0)
+    background("Image/menu2.png", 0, 0)
     while run:
 
         for event in pygame.event.get():
@@ -79,14 +79,14 @@ def menu2():
 
 def map1 () :
     #choisis le background que tu veux et tu codes les choses spécifiques a la map ici
-    background("terrain2.png", 0, 0)
+    background("Image/terrain2.png", 0, 0)
 def map2 () :
     # choisis le background que tu veux et tu codes les choses spécifiques a la map ici
-    background("terrain2.png", 0, 0)
+    background("Image/terrain2.png", 0, 0)
 
 def map3 () :
     # choisis le background que tu veux et tu codes les choses spécifiques a la map ici
-    background("terrain2.png", 0, 0)
+    background("Image/terrain2.png", 0, 0)
 
 
 if __name__ == "__main__":
