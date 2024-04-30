@@ -13,7 +13,7 @@ pygame.display.set_caption("SuperBasketBall ver1.22 474 487 139")
 pygame_icon = pygame.image.load("Image/Ballon.png")
 pygame.display.set_icon(pygame_icon)
 font = pygame.font.SysFont('Helvetica', 20)
-
+ballon = Ballon(game)
 def background(lien, pos_x, pos_y):
     fond = pygame.image.load(lien)
     fond = fond.convert_alpha()
@@ -24,6 +24,7 @@ def background(lien, pos_x, pos_y):
 def main_menu():
     start_bouton = pygame.draw.circle(window, (255, 0, 0), (400, 250), 30)
     quit_bouton = pygame.draw.rect(window, (255, 0, 0), pygame.Rect(725, 0, 75, 80))
+
     while True:
         background("Image/terrain3.png", 0, 0)
         time.sleep(0.5)
@@ -68,7 +69,7 @@ def menu2():
             elif event.type == pygame.KEYDOWN:
                 game.pressed[event.key] = True
                 if event.key == pygame.K_SPACE:
-                    game.ballon.deplacement()
+                    ballon.deplacement()
                     print("TIRE!")
 
         pygame.display.update()
@@ -76,7 +77,7 @@ def menu2():
 def map1():
     background("Image/terrain2.png", 0, 0)
     panier = Panier(game)
-    ballon = Ballon(game)
+
     ballon.panier()
     Panier.spawn_panier(panier)
     window.blit(panier.image, panier.rect)

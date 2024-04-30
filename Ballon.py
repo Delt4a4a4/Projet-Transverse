@@ -27,7 +27,36 @@ class Ballon(pygame.sprite.Sprite):
         self.temps_total_tir = 20
         self.intervalle_temps = 0.01
 
+    def deplacement(self):
 
+        clock = pygame.time.Clock()
+        angle = np.radians(self.angle_de_tir)
+        v0x = self.vitesse_initiale * np.cos(angle)
+        v0y = self.vitesse_initiale * np.sin(angle)
+        temps_total = self.temps_total_tir
+        intervalle_temps = self.intervalle_temps
+
+        for t in np.arange(0, temps_total, intervalle_temps):
+            print(t)
+            # Calcul des positions x et y à chaque instant t
+            x = int(self.x_position_initiale + v0x * t)
+            y = int(self.y_position_initiale + v0y * t - 0.5 * 9.8 * t ** 2)
+
+            # Mise à jour de la position du ballon
+            self.rect.x = x
+            self.rect.y = y
+            print("self.rect.x = ",self.rect.x)
+            print("self.rect.y = ",self.rect.y)
+            # Affichage de la mise à jour sur l'écran
+            pygame.display.update()
+
+            # Utilisation de clock.tick() pour contrôler la vitesse du jeu
+            clock.tick(60)  # Limite le jeu à 60 images par seconde (FPS)
+
+    ''' Mets à jour la trajectoire du ballon à chaque frames
+    '''
+    def update(self):
+        self.deplacement()
 
     '''créer de petit trait pour dire la trajectoire
     '''
@@ -58,25 +87,7 @@ class Ballon(pygame.sprite.Sprite):
         '''self.rect.x_trajectoire = int(v0x * temps)
         self.rect.y_trajectoire = int(self.hauteur_initiale + v0y * temps - 0.5 * 9.8 * temps ** 2)'''
 
-    def deplacement(self):
-        angle = np.radians(self.angle_de_tir)
-        v0x = self.vitesse_initiale * np.cos(angle)
-        v0y = self.vitesse_initiale * np.sin(angle)
-        temps = np.arange(0, self.temps_total_tir, self.intervalle_temps)
-        for i in temps:
-            x = int(self.x_position_initiale + v0x * i)
-            y = int(self.y_position_initiale + v0y * i - 0.5 * 9.8 * i ** 2)
-            self.rect.x = x
-            self.rect.y = y
-            pygame.time.delay(10)  # Ajout d'un délai de 10 millisecondes
-            pygame.display.update()
 
-
-
-    ''' Mets à jour la trajectoire du ballon à chaque frames
-    '''
-    def update(self):
-        self.deplacement()
 
     ''' calcule si le ballon est a une distance du panier pour marquer, si oui le ballon disparait et le score augmente 
     
