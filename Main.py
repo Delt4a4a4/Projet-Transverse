@@ -69,7 +69,7 @@ def menu2():
             elif event.type == pygame.KEYDOWN:
                 game.pressed[event.key] = True
                 if event.key == pygame.K_SPACE:
-                    ballon.deplacement()
+                    ballon.deplacement(window)
                     print("TIRE!")
 
         pygame.display.update()
@@ -81,7 +81,7 @@ def map1():
     ballon.panier()
     Panier.spawn_panier(panier)
     window.blit(panier.image, panier.rect)
-    window.blit(ballon.image, ballon.rect)
+    window.blit(game.ballon.image, game.ballon.rect)
 
 
 def map2():
