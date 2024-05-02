@@ -27,7 +27,7 @@ class Ballon(pygame.sprite.Sprite):
         self.intervalle_temps_trajectoire = 1
 
         self.temps_total_tir = 20
-        self.intervalle_temps = 0.05
+        self.intervalle_temps = 0.25
 
     def deplacement(self,window,panier_group,game):
 

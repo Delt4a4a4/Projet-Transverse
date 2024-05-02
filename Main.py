@@ -45,7 +45,7 @@ def main_menu():
         pygame.display.update()
 def map1():
 
-    background("Image/terrain2.png", 0, 0)
+    background("Image/terrain_match.webp", 0, 0)
 
     game.score_affichage(window)
     ballon.gravity = -9.8
@@ -79,16 +79,16 @@ def menu2():
                 if quit_bouton.collidepoint(pygame.mouse.get_pos()):
                     pygame.quit()
                 elif not button_clicked[0] and map1_bouton.collidepoint(pygame.mouse.get_pos()):
-                    map1()  # Appeler map1 sans créer de nouveau ballon
-                    button_clicked[0] = True  # Mettre à jour le drapeau du bouton 1
+                    map1()
+                    button_clicked[0] = True
                     map = 1
                 elif not button_clicked[0] and map2_bouton.collidepoint(pygame.mouse.get_pos()):
                     map2()
-                    button_clicked[0] = True  # Mettre à jour le drapeau du bouton 2
+                    button_clicked[0] = True
                     map = 2
                 elif not button_clicked[0] and map3_bouton.collidepoint(pygame.mouse.get_pos()):
                     map3()
-                    button_clicked[0] = True  # Mettre à jour le drapeau du bouton 3
+                    button_clicked[0] = True
                     map = 3
             elif event.type == pygame.KEYDOWN:
                 game.pressed[event.key] = True
