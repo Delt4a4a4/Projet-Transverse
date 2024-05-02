@@ -27,7 +27,7 @@ class Ballon(pygame.sprite.Sprite):
         self.intervalle_temps_trajectoire = 1
 
         self.temps_total_tir = 20
-        self.intervalle_temps = 0.01
+        self.intervalle_temps = 0.05
 
     def deplacement(self,window,panier_group,game):
 
@@ -68,13 +68,13 @@ class Ballon(pygame.sprite.Sprite):
                 self.rect.y = self.y_position_initiale
                 game.score_affichage(window)
                 print("score !")
-                return 0
+                return 1
             clock.tick(60)  # Limite le jeu à 60 images par seconde (FPS)
 
     ''' Mets à jour la trajectoire du ballon à chaque frames
-    '''
+    
     def update(self):
-        self.deplacement()
+        self.deplacement()'''
 
     def check_collision(self, sprite, group):
         return pygame.sprite.spritecollide(sprite, group, False, pygame.sprite.collide_mask)  # sprite, group, dokill,(hitbox)collide

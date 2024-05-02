@@ -2,13 +2,14 @@ import pygame
 import Background
 import Panier
 from Ballon import Ballon
+from Panier import Panier
 class Game:
     def __init__(self):
         self.is_playing= False
         self.pressed = {}
-        # score
         self.score = 0
         self.ballon = Ballon(self)
+        self.panier = Panier(self)
         self.puissance_game = 60
         self.angle_de_tir_game = 330
 

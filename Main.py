@@ -4,7 +4,7 @@ from Game import Game
 from Panier import Panier
 from Background import Fondecran
 from Ballon import Ballon
-
+map = 0
 pygame.init()
 game = Game()
 fondecran = Fondecran(game)
@@ -16,6 +16,7 @@ font = pygame.font.SysFont('Helvetica', 20)
 ballon = Ballon(game)
 balloon_group = pygame.sprite.Group()  # Créez un groupe de sprites
 panier_group = pygame.sprite.Group()
+panier = Panier(game)
 def background(lien, pos_x, pos_y):
     fond = pygame.image.load(lien)
     fond = fond.convert_alpha()
@@ -43,21 +44,15 @@ def main_menu():
 
         pygame.display.update()
 def map1():
-    background("Image/terrain2.png", 0, 0)
-    panier = Panier(game)
-    game.score_affichage(window)
 
+    background("Image/terrain2.png", 0, 0)
+
+    game.score_affichage(window)
     ballon.gravity = -9.8
     Panier.spawn_panier(panier)
     panier_group.add(panier)
     panier_group.draw(window)
     balloon_group.add(ballon)
-
-    '''collisions = pygame.sprite.groupcollide(balloon_group, panier_group, True, False)
-    if collisions == True:
-        balloon_group.kill()
-        print("score !")
-        game.score+=1'''
 
 def map2():
     background("Image/terrain2.png", 0, 0)
@@ -75,7 +70,7 @@ def menu2():
     background("Image/menu2.png", 0, 0)
 
     while run:
-
+        global map
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
@@ -86,17 +81,25 @@ def menu2():
                 elif not button_clicked[0] and map1_bouton.collidepoint(pygame.mouse.get_pos()):
                     map1()  # Appeler map1 sans créer de nouveau ballon
                     button_clicked[0] = True  # Mettre à jour le drapeau du bouton 1
-
+                    map = 1
                 elif not button_clicked[0] and map2_bouton.collidepoint(pygame.mouse.get_pos()):
                     map2()
                     button_clicked[0] = True  # Mettre à jour le drapeau du bouton 2
+                    map = 2
                 elif not button_clicked[0] and map3_bouton.collidepoint(pygame.mouse.get_pos()):
                     map3()
                     button_clicked[0] = True  # Mettre à jour le drapeau du bouton 3
+                    map = 3
             elif event.type == pygame.KEYDOWN:
                 game.pressed[event.key] = True
                 if event.key == pygame.K_SPACE:
-                    ballon.deplacement(window,panier_group,game)
+                    score = ballon.deplacement(window,panier_group,game)
+                    if score == 1 and map == 1 :
+                        map1()
+
+
+
+
                     print("TIRE!")
                 if event.key == pygame.K_z:
                     game.puissance_game +=1
