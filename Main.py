@@ -46,20 +46,49 @@ def main_menu():
 def map1():
 
     background("Image/terrain_match.webp", 0, 0)
-
     game.score_affichage(window)
     ballon.gravity = -9.8
+    ballon.trajectoire(window)
+    Panier.spawn_panier(panier)
+    panier_group.add(panier)
+    panier_group.draw(window)
+    balloon_group.add(ballon)
+def map1_bis():
+    background("Image/terrain_match.webp", 0, 0)
+    game.score_affichage(window)
+    panier_group.draw(window)
+
+
+def map2():
+    background("Image/terrain_match.webp", 0, 0)
+
+    game.score_affichage(window)
+    ballon.gravity = -1.62
+    ballon.trajectoire(window)
     Panier.spawn_panier(panier)
     panier_group.add(panier)
     panier_group.draw(window)
     balloon_group.add(ballon)
 
-def map2():
-    background("Image/terrain2.png", 0, 0)
-
+def map2_bis():
+    background("Image/terrain_match.webp", 0, 0)
+    game.score_affichage(window)
+    panier_group.draw(window)
 def map3():
-    background("Image/terrain2.png", 0, 0)
+    background("Image/terrain_match.webp", 0, 0)
 
+    game.score_affichage(window)
+    ballon.gravity = -3.71
+    ballon.trajectoire(window)
+    Panier.spawn_panier(panier)
+    panier_group.add(panier)
+    panier_group.draw(window)
+    balloon_group.add(ballon)
+
+def map3_bis():
+    background("Image/terrain_match.webp", 0, 0)
+    game.score_affichage(window)
+    panier_group.draw(window)
 def menu2():
     run = True
     button_clicked = [False]  # Liste des boutons cliqués
@@ -96,32 +125,60 @@ def menu2():
                     score = ballon.deplacement(window,panier_group,game)
                     if score == 1 and map == 1 :
                         map1()
-
-
-
-
+                    if score == 1 and map == 2 :
+                        map2()
+                    if score == 1 and map == 3 :
+                        map3()
                     print("TIRE!")
                 if event.key == pygame.K_z:
                     game.puissance_game +=1
                     game.score_affichage(window)
                     ballon.vitesse_initiale = game.puissance_game
+                    if map == 1:
+                        map1_bis()
+                    if map == 2:
+                        map2_bis()
+                    if map == 3:
+                        map3_bis()
+                    ballon.trajectoire(window)
                     print("up puissance")
                     print(game.puissance_game)
                 if event.key == pygame.K_s:
                     game.puissance_game -=1
                     game.score_affichage(window)
                     ballon.vitesse_initiale =game.puissance_game
+                    if map == 1:
+                        map1_bis()
+                    if map == 2:
+                        map2_bis()
+                    if map == 3:
+                        map3_bis()
+                    ballon.trajectoire(window)
                     print("down puissance")
                     print(game.puissance_game)
                 if event.key == pygame.K_q:
                     game.angle_de_tir_game +=1
                     game.score_affichage(window)
+                    if map == 1:
+                        map1_bis()
+                    if map == 2:
+                        map2_bis()
+                    if map == 3:
+                        map3_bis()
+                    ballon.trajectoire(window)
                     ballon.angle_de_tir = game.angle_de_tir_game
                     print("up angle de tir")
                     print(game.angle_de_tir_game)
                 if event.key == pygame.K_d:
                     game.angle_de_tir_game -=1
                     game.score_affichage(window)
+                    if map == 1 :
+                        map1_bis()
+                    if map == 2 :
+                        map2_bis()
+                    if map == 3 :
+                        map3_bis()
+                    ballon.trajectoire(window)
                     ballon.angle_de_tir = game.angle_de_tir_game
                     print("down angle de tir")
                     print(game.angle_de_tir_game)

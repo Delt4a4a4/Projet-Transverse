@@ -7,11 +7,11 @@ class Ballon(pygame.sprite.Sprite):
         super().__init__()
         # Paramètres du ballon
         self.image = pygame.image.load("Image/Ballon.png")
-        self.image = pygame.transform.scale(self.image, (50, 50))  # taille de l'image du ballon à remplir
+        self.image = pygame.transform.scale(self.image, (30, 30))  # taille de l'image du ballon à remplir
         self.rect = self.image.get_rect()
         self.rect.x = 100   # meme valeur que hauteur_initiale
-        self.rect.y = 100   # meme valeur que hauteur_initiale
-        self.y_position_initiale = 100  #changer pour mettre la position du ballon au départ
+        self.rect.y = 400   # meme valeur que hauteur_initiale
+        self.y_position_initiale = 400  #changer pour mettre la position du ballon au départ
         self.x_position_initiale = 100  #changer pour mettre la position du ballon au départ
         self.vitesse_initiale = 70
         self.angle_de_tir = 330
@@ -24,10 +24,11 @@ class Ballon(pygame.sprite.Sprite):
         '''self.rect.x_trajectoire = 0  # changer pour mettre la position du ballon au départ
         self.rect.y_trajectoire = 0  # changer pour mettre la position du ballon au départ'''
         self.temps_total_trajectoire = 4
-        self.intervalle_temps_trajectoire = 1
+        self.intervalle_temps_trajectoire = 0.7
 
         self.temps_total_tir = 20
         self.intervalle_temps = 0.25
+
 
     def deplacement(self,window,panier_group,game):
 
@@ -42,14 +43,11 @@ class Ballon(pygame.sprite.Sprite):
             print(t)
             x = int(self.x_position_initiale + v0x * t)
             y = int(self.y_position_initiale + v0y * t - 0.5 * self.gravity * t ** 2)
-
-            # Mise à jour de la position du ballon
             self.rect.x = x
             self.rect.y = y
             print("self.rect.x = ",self.rect.x)
             print("self.rect.y = ",self.rect.y)
             print("gravité", self.gravity)
-
             window.blit(affichage, (0, 0))
             self.balloon.draw(window)
             pygame.display.flip()
@@ -90,21 +88,31 @@ class Ballon(pygame.sprite.Sprite):
 
     '''Calcule la trajectoire du ballon  
     '''
-    def trajectoire(self):
+    def trajectoire(self,window):
+        point_surface = pygame.Surface((800, 500), pygame.SRCALPHA)
         trajectoire_x = []
         trajectoire_y = []
+        clock = pygame.time.Clock()
         angle = np.radians(self.angle_de_tir)
         v0x = self.vitesse_initiale * np.cos(angle)
         v0y = self.vitesse_initiale * np.sin(angle)
-        temps = np.arange(0, self.temps_total_trajectoire, self.intervalle_temps_trajectoire)  #donne la position du ballon tout les "intervalles_temps" sur "temps total"
-        for i in temps:
-            x = int(self.x_position_initiale + v0x * i)
-            y = int(self.y_position_initiale + v0y * i - 0.5 * 9.8 * i ** 2)
+        temps_total = self.temps_total_tir
+        intervalle_temps = self.intervalle_temps_trajectoire
+        affichage = window.copy()
+        for t in np.arange(0, temps_total, intervalle_temps):
+            x = int(self.x_position_initiale + v0x * t)
+            y = int(self.y_position_initiale + v0y * t - 0.5 * self.gravity * t ** 2)
+
             trajectoire_x.append(x)
             trajectoire_y.append(y)
-        self.trajectoire_x = trajectoire_x
-        self.trajectoire_y = trajectoire_y
-
+        print(trajectoire_x,trajectoire_y)
+        for loop in range (1,4) :
+            self.trajectoire_x = trajectoire_x[loop]
+            self.trajectoire_y = trajectoire_y[loop]
+            point_surface.fill((0, 0, 0, 0))
+            pygame.draw.rect(point_surface, (255, 0, 0), (self.trajectoire_x+15, self.trajectoire_y+15, 5, 5))
+            window.blit(point_surface, (0, 0))
+            pygame.display.flip()
 
         '''self.rect.x_trajectoire = int(v0x * temps)
         self.rect.y_trajectoire = int(self.hauteur_initiale + v0y * temps - 0.5 * 9.8 * temps ** 2)'''
@@ -115,12 +123,12 @@ class Ballon(pygame.sprite.Sprite):
     
     "Panier.rect.x", "Panier.rect.y" et "Game.score" sont totalement inventé faudra changer en fonction des autres codes 
     '''
-    def panier_score (self,panier):
+    '''def panier_score (self,panier):
         if abs(self.rect.x - panier.rect.x) < 5 and abs(self.rect.y - panier.rect.y) < 5:
             self.rect.x = 100
             self.rect.y = 100
             self.game.score += 1
-            print("score !")
+            print("Score !")'''
 
 
 '''creation d'une classe Fleche 
