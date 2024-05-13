@@ -1,16 +1,17 @@
 # Projet-Transverse
-Bienvenue sur SuperBasketball, un jeu de tir au basket passionnant programmé en Python. Ce jeu unique vous emmène dans un voyage à travers l'espace où chaque carte représente un monde différent avec sa propre gravité et ses défis uniques. Le but est de maîtriser les tirs au panier sous différentes contraintes gravitationnelles pour débloquer de nouvelles cartes et défis.
+SuperBasketball est un jeu de tir au basket captivant développé en Python. Ce jeu original vous transporte dans un périple à travers l'univers où chaque carte incarne un univers distinct avec sa propre gravité et ses défis singuliers. L'objectif est d'apprendre à tirer au panier en tenant compte de diverses contraintes gravitationnelles afin de découvrir de nouvelles cartes et défis.
 
-Concept du jeu
-Dans "SuperBasketball", le joueur est testé sur son habileté à ajuster son tirs en fonction de la gravité variable de différents corps célestes, comme la Terre ou la Lune . Pour rendre le jeu plus captivant, le joueur doit marquer un certain nombre de paniers pour débloquer la carte suivante, ajoutant un élément de progression et de défi à l'expérience de jeu.
+Le concept du jeu
+Dans "SuperBasketball", on évalue la capacité du joueur à adapter son tir en fonction de la gravité fluctuante de divers corps célestes, tels que la Terre ou la Lune. Afin d'accroître l'intérêt du jeu, le joueur doit couvrir plusieurs paniers afin de débloquer la carte suivante, ce qui apporte un élément de progression et de défi à l'expérience de jeu.
 
-Fonctionnalités principales
-Progression par carte : Commencez votre aventure sur une carte initiale et débloquez de nouvelles cartes en atteignant des objectifs spécifiques de tirs réussis.
-Simulation physique variée : Chaque carte modifie les lois de la physique, notamment la gravité, influençant ainsi la trajectoire et la force nécessaires pour réussir un tir.
-Interface utilisateur facile à naviguer : Simple à utiliser, permettant aux joueurs de se concentrer sur leur technique de tir plutôt que sur la manipulation du logiciel.
-Graphismes immersifs : Profitez d'illustrations captivantes qui mettent en valeur les environnements uniques de chaque carte spatiale.
-Technologies utilisées
-Python : Le jeu est développé avec Python, fournissant une base solide pour la logique de jeu et les simulations physiques.
-Pygame : Ce framework est utilisé pour gérer les aspects visuels et interactifs du jeu, y compris les entrées des joueurs et les animations.
-Comment démarrer ?
-Pour vous lancer dans "SuperBasketball", assurez-vous d'avoir installé Python et Pygame. Vous pouvez télécharger le code source depuis ce dépôt et exécuter le fichier principal pour commencer votre aventure
+Principales fonctionnalités
+Commencez votre aventure sur une carte d'origine et débloquez de nouvelles cartes en atteignant des objectifs précis de tirs réussis.
+Chaque carte modifie les lois de la physique, en particulier la gravité, ce qui a un impact sur la trajectoire et la force requises pour réussir un tir.
+
+Une interface utilisateur conviviale : Une interface facile à utiliser, offrant aux joueurs la possibilité de se focaliser sur leur technique de tir plutôt que sur la manipulation du logiciel.
+Graphismes captivants : Bénéficiez d'images fascinantes qui mettent en évidence les environnements singuliers de chaque carte spatiale.
+Les technologies employées
+Python : Le jeu utilise Python pour son développement, offrant ainsi une fondation solide pour la logique de jeu et les simulations physiques.
+L'utilisation de Pygame permet de gérer les aspects visuels et interactifs du jeu, tels que les interactions des joueurs et les animations.
+Comment commencer?
+Afin de commencer "SuperBasketball", veuillez vérifier que vous avez installé Python et Pygame. Le code source est disponible à télécharger depuis ce dépôt et vous pouvez exécuter le fichier principal afin de débuter votre aventure.
