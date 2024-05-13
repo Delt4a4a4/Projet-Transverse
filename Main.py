@@ -203,11 +203,12 @@ def menu2():
             game.score =0
             game.chrono = 0
         if game.chrono == 60 and map == 2 and game.score >= 15:
-            map3()
+
             map = 3
             token2 = 1
             game.score =0
             game.chrono = 0
+            map3()
         if game.chrono == 60 and map == 2 and game.score < 15:
             main_menu()
             game.score =0
