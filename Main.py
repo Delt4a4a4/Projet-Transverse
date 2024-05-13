@@ -29,9 +29,9 @@ def main_menu():
     quit_bouton = pygame.draw.rect(window, (255, 0, 0), pygame.Rect(725, 0, 75, 80))
 
     while True:
-        background("Image/terrain3.png", 0, 0)
+        background("Image/Capture_decran_2024-05-13_144627.webp", 0, 0)
         time.sleep(0.5)
-        background("Image/terrain4.png", 0, 0)
+        background("Image/image2.webp", 0, 0)
         time.sleep(0.5)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -43,6 +43,9 @@ def main_menu():
                     pygame.quit()
 
         pygame.display.update()
+
+def victoire ():
+    background("Image/victoire.webp", 0, 0)
 def map1():
 
     background("Image/terrain_match.webp", 0, 0)
@@ -60,7 +63,7 @@ def map1_bis():
 
 
 def map2():
-    background("Image/terrain_match.webp", 0, 0)
+    background("Image/Moon.webp", 0, 0)
 
     game.score_affichage(window)
     ballon.gravity = -1.62
@@ -71,11 +74,11 @@ def map2():
     balloon_group.add(ballon)
 
 def map2_bis():
-    background("Image/terrain_match.webp", 0, 0)
+    background("Image/Moon.webp", 0, 0)
     game.score_affichage(window)
     panier_group.draw(window)
 def map3():
-    background("Image/terrain_match.webp", 0, 0)
+    background("Image/mars.webp", 0, 0)
 
     game.score_affichage(window)
     ballon.gravity = -3.71
@@ -86,7 +89,7 @@ def map3():
     balloon_group.add(ballon)
 
 def map3_bis():
-    background("Image/terrain_match.webp", 0, 0)
+    background("Image/mars.webp", 0, 0)
     game.score_affichage(window)
     panier_group.draw(window)
 def menu2():
@@ -97,9 +100,14 @@ def menu2():
     map3_bouton = pygame.draw.rect(window, (255, 0, 0), pygame.Rect(285, 260, 225, 125))
     quit_bouton = pygame.draw.rect(window, (255, 0, 0), pygame.Rect(725, 0, 75, 80))
     background("Image/menu2.png", 0, 0)
-
+    start_time = pygame.time.get_ticks()
     while run:
         global map
+
+        elapsed_time = pygame.time.get_ticks() - start_time
+        seconds = elapsed_time // 1000
+        game.chrono = seconds
+        pygame.display.update()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
@@ -182,6 +190,41 @@ def menu2():
                     ballon.angle_de_tir = game.angle_de_tir_game
                     print("down angle de tir")
                     print(game.angle_de_tir_game)
+                    print (map)
+        if game.chrono == 60 and map == 1 and game.score >=10 :
+
+            map=2
+            token1 = 1
+            game.score =0
+            game.chrono=0
+            map2()
+        if game.chrono == 60 and map == 1 and game.score < 10 :
+            main_menu()
+            game.score =0
+            game.chrono = 0
+        if game.chrono == 60 and map == 2 and game.score >= 15:
+            map3()
+            map = 3
+            token2 = 1
+            game.score =0
+            game.chrono = 0
+        if game.chrono == 60 and map == 2 and game.score < 15:
+            main_menu()
+            game.score =0
+            game.chrono = 0
+        if game.chrono == 60 and map == 3 and game.score >= 20:
+            token3 = 1
+            game.score =0
+            game.chrono = 0
+            if token1 == 1 and token2 == 1 and token3 == 1:
+                victoire()
+        if game.chrono == 60 and map == 3 and game.score <20 :
+            main_menu()
+
+
+            game.score =0
+            game.chrono = 0
+
         balloon_group.draw(window) ##
         pygame.display.update()
 

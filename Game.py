@@ -12,6 +12,7 @@ class Game:
         self.panier = Panier(self)
         self.puissance_game = 60
         self.angle_de_tir_game = 330
+        self.chrono = 0
 
     # fait apparraitre les "stats"
 
@@ -31,3 +32,7 @@ class Game:
         font = pygame.font.SysFont("lato", 36)
         bank_text = font.render(f" {self.puissance_game}", 1, (255, 255, 255))
         screen.blit(bank_text, (750, 0))
+
+        font = pygame.font.SysFont("lato", 36)
+        bank_text = font.render(f" {self.chrono}Second", 1, (255, 255, 255))
+        screen.blit(bank_text, (400, 0))

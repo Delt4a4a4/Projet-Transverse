@@ -24,9 +24,9 @@ class Ballon(pygame.sprite.Sprite):
         '''self.rect.x_trajectoire = 0  # changer pour mettre la position du ballon au départ
         self.rect.y_trajectoire = 0  # changer pour mettre la position du ballon au départ'''
         self.temps_total_trajectoire = 4
-        self.intervalle_temps_trajectoire = 0.7
+        self.intervalle_temps_trajectoire = 0.1
 
-        self.temps_total_tir = 20
+        self.temps_total_tir = 2000
         self.intervalle_temps = 0.25
 
 
@@ -106,7 +106,7 @@ class Ballon(pygame.sprite.Sprite):
             trajectoire_x.append(x)
             trajectoire_y.append(y)
         print(trajectoire_x,trajectoire_y)
-        for loop in range (1,4) :
+        for loop in range (1,20) :
             self.trajectoire_x = trajectoire_x[loop]
             self.trajectoire_y = trajectoire_y[loop]
             point_surface.fill((0, 0, 0, 0))
