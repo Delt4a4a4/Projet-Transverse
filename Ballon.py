@@ -40,14 +40,10 @@ class Ballon(pygame.sprite.Sprite):
         intervalle_temps = self.intervalle_temps
         affichage = window.copy()
         for t in np.arange(0, temps_total, intervalle_temps):
-            print(t)
             x = int(self.x_position_initiale + v0x * t)
             y = int(self.y_position_initiale + v0y * t - 0.5 * self.gravity * t ** 2)
             self.rect.x = x
             self.rect.y = y
-            print("self.rect.x = ",self.rect.x)
-            print("self.rect.y = ",self.rect.y)
-            print("gravité", self.gravity)
             window.blit(affichage, (0, 0))
             self.balloon.draw(window)
             pygame.display.flip()
@@ -105,7 +101,6 @@ class Ballon(pygame.sprite.Sprite):
 
             trajectoire_x.append(x)
             trajectoire_y.append(y)
-        print(trajectoire_x,trajectoire_y)
         for loop in range (1,20) :
             self.trajectoire_x = trajectoire_x[loop]
             self.trajectoire_y = trajectoire_y[loop]

@@ -17,9 +17,9 @@ class Game:
     # fait apparraitre les "stats"
 
     def score_affichage(self, screen):
-        pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(0, 0, 150, 25))
+        pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(0, 0, 800, 25))
         pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(650,0 , 800, 25))
-        pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(390, 0, 500,25))
+        pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(400, 0, 500,25))
 
         font = pygame.font.SysFont("lato", 36)
         argent_text = font.render(f"score : {self.score}", 1, (255, 255, 255))

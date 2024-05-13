@@ -17,6 +17,26 @@ ballon = Ballon(game)
 balloon_group = pygame.sprite.Group()  # Créez un groupe de sprites
 panier_group = pygame.sprite.Group()
 panier = Panier(game)
+
+from pygame import mixer
+def playsound(songName):
+    mixer.init()
+    mixer.music.load(songName)
+    mixer.music.set_volume(0.5)
+    mixer.music.play()
+
+def stopsound():
+    mixer.music.stop()
+
+def volume(vol,new_vol):
+    if new_vol==0:
+        vol=0
+    elif new_vol==1 or new_vol==-1:
+        vol+=0.1*new_vol
+    elif new_vol==2:
+        vol=0.5
+    mixer.music.set_volume(vol)
+    return vol
 def background(lien, pos_x, pos_y):
     fond = pygame.image.load(lien)
     fond = fond.convert_alpha()
@@ -29,9 +49,9 @@ def main_menu():
     quit_bouton = pygame.draw.rect(window, (255, 0, 0), pygame.Rect(725, 0, 75, 80))
 
     while True:
-        background("Image/menu1.png", 0, 0)
+        background("Image/image.webp", 0, 0)
         time.sleep(0.5)
-        background("Image/menu3.png", 0, 0)
+        background("Image/image2.webp", 0, 0)
         time.sleep(0.5)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
