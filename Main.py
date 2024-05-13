@@ -165,7 +165,7 @@ def menu2():
                     print("down puissance")
                     print(game.puissance_game)
                 if event.key == pygame.K_q:
-                    game.angle_de_tir_game +=1
+                    game.angle_de_tir_game -=1
                     game.score_affichage(window)
                     if map == 1:
                         map1_bis()
@@ -178,7 +178,7 @@ def menu2():
                     print("up angle de tir")
                     print(game.angle_de_tir_game)
                 if event.key == pygame.K_d:
-                    game.angle_de_tir_game -=1
+                    game.angle_de_tir_game +=1
                     game.score_affichage(window)
                     if map == 1 :
                         map1_bis()
@@ -192,33 +192,35 @@ def menu2():
                     print(game.angle_de_tir_game)
                     print (map)
         if game.chrono == 60 and map == 1 and game.score >=10 :
-
-            map=2
             token1 = 1
             game.score =0
             game.chrono=0
+            game.puissance_game = 60
             map2()
-        if game.chrono == 60 and map == 1 and game.score < 10 :
+            map=2
+        elif game.chrono == 60 and map == 1 and game.score < 10 :
             main_menu()
+            game.puissance_game = 60
             game.score =0
             game.chrono = 0
-        if game.chrono == 60 and map == 2 and game.score >= 15:
-            map = 3
+        if game.chrono == 120 and map == 2 and game.score >= 15:
+            map3()
             token2 = 1
             game.score =0
             game.chrono = 0
-            map3()
-        if game.chrono == 60 and map == 2 and game.score < 15:
+            game.puissance_game = 60
+            map = 3
+        elif game.chrono == 120 and map == 2 and game.score < 15:
             main_menu()
+            game.puissance_game = 60
             game.score =0
             game.chrono = 0
-        if game.chrono == 60 and map == 3 and game.score >= 20:
+        if game.chrono == 180 and map == 3 and game.score >= 20:
             token3 = 1
-            game.score =0
-            game.chrono = 0
             if token1 == 1 and token2 == 1 and token3 == 1:
                 victoire()
-        if game.chrono == 60 and map == 3 and game.score <20 :
+        elif game.chrono == 180 and map == 3 and game.score <20 :
+            game.puissance_game = 60
             main_menu()
 
 
