@@ -10,8 +10,8 @@ Chaque carte modifie les lois de la physique, en particulier la gravité, ce qui
 
 Une interface utilisateur conviviale : Une interface facile à utiliser, offrant aux joueurs la possibilité de se focaliser sur leur technique de tir plutôt que sur la manipulation du logiciel.
 Graphismes captivants : Bénéficiez d'images fascinantes qui mettent en évidence les environnements singuliers de chaque carte spatiale.
-Les technologies employées
-Python : Le jeu utilise Python pour son développement, offrant ainsi une fondation solide pour la logique de jeu et les simulations physiques.
+Les technologies employées :
+Python -> Le jeu utilise Python pour son développement, offrant ainsi une fondation solide pour la logique de jeu et les simulations physiques.
 L'utilisation de Pygame permet de gérer les aspects visuels et interactifs du jeu, tels que les interactions des joueurs et les animations.
 Comment commencer?
 Afin de commencer "SuperBasketball", veuillez vérifier que vous avez installé Python et Pygame. Le code source est disponible à télécharger depuis ce dépôt et vous pouvez exécuter le fichier principal afin de débuter votre aventure.
