@@ -29,9 +29,9 @@ def main_menu():
     quit_bouton = pygame.draw.rect(window, (255, 0, 0), pygame.Rect(725, 0, 75, 80))
 
     while True:
-        background("Image/Capture_decran_2024-05-13_144627.webp", 0, 0)
+        background("Image/menu1.png", 0, 0)
         time.sleep(0.5)
-        background("Image/image2.webp", 0, 0)
+        background("Image/menu3.png", 0, 0)
         time.sleep(0.5)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
