@@ -161,7 +161,8 @@ def menu2():
                         game.puissance_game = 60
                         ballon.vitesse_initiale = game.puissance_game
                         map2()
-                        game.puissance_game = 60ballon.trajectoire(window)
+                        game.puissance_game = 60
+                        ballon.trajectoire(window)
                     if score == 1 and map == 3 :
                         game.puissance_game = 60
                         ballon.vitesse_initiale = game.puissance_game
