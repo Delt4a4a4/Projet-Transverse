@@ -152,11 +152,20 @@ def menu2():
                 if event.key == pygame.K_SPACE:
                     score = ballon.deplacement(window,panier_group,game)
                     if score == 1 and map == 1 :
+                        game.puissance_game = 60
+                        ballon.vitesse_initiale = game.puissance_game
                         map1()
+                        ballon.trajectoire(window)
                     if score == 1 and map == 2 :
+                        game.puissance_game = 60
+                        ballon.vitesse_initiale = game.puissance_game
                         map2()
+                        game.puissance_game = 60ballon.trajectoire(window)
                     if score == 1 and map == 3 :
+                        game.puissance_game = 60
+                        ballon.vitesse_initiale = game.puissance_game
                         map3()
+                        ballon.trajectoire(window)
                     print("TIRE!")
                 if event.key == pygame.K_z:
                     game.puissance_game +=1
