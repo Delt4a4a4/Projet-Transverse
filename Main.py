@@ -45,6 +45,7 @@ def background(lien, pos_x, pos_y):
     pygame.display.flip()
 
 def main_menu():
+    playsound("Song\song.mp3")
     start_bouton = pygame.draw.circle(window, (255, 0, 0), (400, 250), 30)
     quit_bouton = pygame.draw.rect(window, (255, 0, 0), pygame.Rect(725, 0, 75, 80))
 
@@ -168,7 +169,7 @@ def menu2():
                         ballon.trajectoire(window)
                     print("TIRE!")
                 if event.key == pygame.K_z:
-                    game.puissance_game +=1
+                    game.puissance_game +=2
                     game.score_affichage(window)
                     ballon.vitesse_initiale = game.puissance_game
                     if map == 1:
@@ -181,7 +182,7 @@ def menu2():
                     print("up puissance")
                     print(game.puissance_game)
                 if event.key == pygame.K_s:
-                    game.puissance_game -=1
+                    game.puissance_game -=2
                     game.score_affichage(window)
                     ballon.vitesse_initiale =game.puissance_game
                     if map == 1:
@@ -194,7 +195,7 @@ def menu2():
                     print("down puissance")
                     print(game.puissance_game)
                 if event.key == pygame.K_q:
-                    game.angle_de_tir_game -=1
+                    game.angle_de_tir_game -=2
                     game.score_affichage(window)
                     if map == 1:
                         map1_bis()
@@ -207,7 +208,7 @@ def menu2():
                     print("up angle de tir")
                     print(game.angle_de_tir_game)
                 if event.key == pygame.K_d:
-                    game.angle_de_tir_game +=1
+                    game.angle_de_tir_game +=2
                     game.score_affichage(window)
                     if map == 1 :
                         map1_bis()

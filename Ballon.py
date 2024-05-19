@@ -75,13 +75,14 @@ class Ballon(pygame.sprite.Sprite):
 
 
     '''créer de petit trait pour dire la trajectoire
-    '''
+    
     def trajectoire_fleche(self,surface):
         back_color = (60, 60, 60)
         angle_position = [self.angle_de_tir]
         for i in self.x_trajectoire :
             pygame.draw.rect(surface, back_color, (self.x_trajectoire[i], self.y_trajectoire[i]), (self.x_trajectoire[i]+5, self.y_trajectoire[i]), 3)
 
+    '''
     '''Calcule la trajectoire du ballon  
     '''
     def trajectoire(self,window):
@@ -109,38 +110,4 @@ class Ballon(pygame.sprite.Sprite):
             window.blit(point_surface, (0, 0))
             pygame.display.flip()
 
-        '''self.rect.x_trajectoire = int(v0x * temps)
-        self.rect.y_trajectoire = int(self.hauteur_initiale + v0y * temps - 0.5 * 9.8 * temps ** 2)'''
 
-
-
-    ''' calcule si le ballon est a une distance du panier pour marquer, si oui le ballon disparait et le score augmente 
-    
-    "Panier.rect.x", "Panier.rect.y" et "Game.score" sont totalement inventé faudra changer en fonction des autres codes 
-    '''
-    '''def panier_score (self,panier):
-        if abs(self.rect.x - panier.rect.x) < 5 and abs(self.rect.y - panier.rect.y) < 5:
-            self.rect.x = 100
-            self.rect.y = 100
-            self.game.score += 1
-            print("Score !")'''
-
-
-'''creation d'une classe Fleche 
-'''
-class Fleche(pygame.sprite.Sprite):
-    def __init__(self,Game):
-        super().__init__()
-        self.rect.x = Ballon.rect.x
-        self.rect.y = Ballon.rect.y
-        self.image = pygame.image.load("Image/Flèche.png")
-        self.image = pygame.transform.scale(self.image, (100, 100))  # taille de l'image du ballon à remplir
-        self.rect = self.image.get_rect()
-        self.angle_de_tir = Ballon.angle_de_tir
-        self.origin_image = self.image
-
-    '''fait tourner l'image de la fleche par rapport au bas gauche de l'image
-    '''
-    def fleche_tourne(self):
-        self.image = pygame.transform.rotozoom(self.origin_image, self.angle_de_tir,1)
-        self.rect = self.image.get_rect(center=self.rect.bottomleft)
