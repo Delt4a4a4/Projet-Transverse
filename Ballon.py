@@ -7,12 +7,12 @@ class Ballon(pygame.sprite.Sprite):
         super().__init__()
         # Paramètres du ballon
         self.image = pygame.image.load("Image/Ballon.png")
-        self.image = pygame.transform.scale(self.image, (30, 30))  # taille de l'image du ballon à remplir
+        self.image = pygame.transform.scale(self.image, (30, 30))
         self.rect = self.image.get_rect()
-        self.rect.x = 100   # meme valeur que hauteur_initiale
-        self.rect.y = 400   # meme valeur que hauteur_initiale
-        self.y_position_initiale = 400  #changer pour mettre la position du ballon au départ
-        self.x_position_initiale = 100  #changer pour mettre la position du ballon au départ
+        self.rect.x = 100
+        self.rect.y = 400
+        self.y_position_initiale = 400  #
+        self.x_position_initiale = 100
         self.vitesse_initiale = 70
         self.angle_de_tir = 330
         self.balloon = pygame.sprite.Group()
@@ -21,8 +21,6 @@ class Ballon(pygame.sprite.Sprite):
         self.panier = Panier
         self.x_trajectoire = []
         self.y_trajectoire = []
-        '''self.rect.x_trajectoire = 0  # changer pour mettre la position du ballon au départ
-        self.rect.y_trajectoire = 0  # changer pour mettre la position du ballon au départ'''
         self.temps_total_trajectoire = 4
         self.intervalle_temps_trajectoire = 0.1
 
@@ -63,26 +61,10 @@ class Ballon(pygame.sprite.Sprite):
                 game.score_affichage(window)
                 print("score !")
                 return 1
-            clock.tick(60)  # Limite le jeu à 60 images par seconde (FPS)
-
-    ''' Mets à jour la trajectoire du ballon à chaque frames
-    
-    def update(self):
-        self.deplacement()'''
-
+            clock.tick(60)
     def check_collision(self, sprite, group):
         return pygame.sprite.spritecollide(sprite, group, False, pygame.sprite.collide_mask)  # sprite, group, dokill,(hitbox)collide
 
-
-    '''créer de petit trait pour dire la trajectoire
-    
-    def trajectoire_fleche(self,surface):
-        back_color = (60, 60, 60)
-        angle_position = [self.angle_de_tir]
-        for i in self.x_trajectoire :
-            pygame.draw.rect(surface, back_color, (self.x_trajectoire[i], self.y_trajectoire[i]), (self.x_trajectoire[i]+5, self.y_trajectoire[i]), 3)
-
-    '''
     '''Calcule la trajectoire du ballon  
     '''
     def trajectoire(self,window):
