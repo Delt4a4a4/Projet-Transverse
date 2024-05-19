@@ -27,7 +27,11 @@ class Ballon(pygame.sprite.Sprite):
         self.temps_total_tir = 2000
         self.intervalle_temps = 0.25
 
-
+    """
+    calcule et affiche le déplacement du ballon 
+    Entrée : Class Ballon
+    Sortie : NULL
+    """
     def deplacement(self,window,panier_group,game):
 
         clock = pygame.time.Clock()
@@ -62,10 +66,18 @@ class Ballon(pygame.sprite.Sprite):
                 print("score !")
                 return 1
             clock.tick(60)
+
+    """
+    permet de savoir si le ballon touche le panier 
+    Entrée : Class Ballon
+    Sortie : NULL
+    """
     def check_collision(self, sprite, group):
         return pygame.sprite.spritecollide(sprite, group, False, pygame.sprite.collide_mask)  # sprite, group, dokill,(hitbox)collide
 
-    '''Calcule la trajectoire du ballon  
+    '''Calcule la trajectoire du ballon et affiche des petits points sur cette trajectoire 
+    Entrée : Class Ballon, Fenêtre 
+    Sortie : NULL
     '''
     def trajectoire(self,window):
         point_surface = pygame.Surface((800, 500), pygame.SRCALPHA)

@@ -14,7 +14,11 @@ class Game:
         self.angle_de_tir_game = 330
         self.chrono = 0
 
-    # fait apparraitre les "stats"
+    '''
+    permet d'afficher les infos de la partie en haut de l'ecran 
+    Entrée : Class Game, Fenêtre
+    Sortie : NULL
+    '''
 
     def score_affichage(self, screen):
         pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(0, 0, 800, 25))

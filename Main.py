@@ -4,6 +4,8 @@ from Game import Game
 from Panier import Panier
 from Background import Fondecran
 from Ballon import Ballon
+from pygame import mixer
+
 map = 0
 pygame.init()
 game = Game()
@@ -18,16 +20,30 @@ balloon_group = pygame.sprite.Group()  # Créez un groupe de sprites
 panier_group = pygame.sprite.Group()
 panier = Panier(game)
 
-from pygame import mixer
+'''
+Permet de jouer une music 
+Entrée : fichier mp3
+Sortie : NULL
+'''
 def playsound(songName):
     mixer.init()
     mixer.music.load(songName)
     mixer.music.set_volume(0.5)
     mixer.music.play()
 
+'''
+Permet d'arrêter une music 
+Entrée : NULL
+Sortie : NULL
+'''
 def stopsound():
     mixer.music.stop()
 
+'''
+Permet d'arrêter une music 
+Entrée : Int, Int 
+Sortie : Int 
+'''
 def volume(vol,new_vol):
     if new_vol==0:
         vol=0
@@ -37,6 +53,12 @@ def volume(vol,new_vol):
         vol=0.5
     mixer.music.set_volume(vol)
     return vol
+
+'''
+Permet d'afficher un fond d'écran 
+Entrée : Image, Int, Int 
+Sortie : NULL
+'''
 def background(lien, pos_x, pos_y):
     fond = pygame.image.load(lien)
     fond = fond.convert_alpha()
@@ -44,6 +66,11 @@ def background(lien, pos_x, pos_y):
     window.blit(fond, (pos_x, pos_y))
     pygame.display.flip()
 
+'''
+Permet d'afficher le 1e écran
+Entrée : NULL
+Sortie : NULL
+'''
 def main_menu():
     playsound("Song\song.mp3")
     start_bouton = pygame.draw.circle(window, (255, 0, 0), (400, 250), 30)
@@ -65,8 +92,19 @@ def main_menu():
 
         pygame.display.update()
 
+'''
+Permet d'afficher l'écran de victoire 
+Entrée : NULL
+Sortie : NULL
+'''
 def victoire ():
     background("Image/victoire.webp", 0, 0)
+
+'''
+lance la 1e map avec tout les sprites et l'affichage 
+Entrée : NULL
+Sortie : NULL
+'''
 def map1():
 
     background("Image/terrain_match.webp", 0, 0)
@@ -77,12 +115,22 @@ def map1():
     panier_group.add(panier)
     panier_group.draw(window)
     balloon_group.add(ballon)
+
+'''
+lance la 1e map 
+Entrée : NULL
+Sortie : NULL
+'''
 def map1_bis():
     background("Image/terrain_match.webp", 0, 0)
     game.score_affichage(window)
     panier_group.draw(window)
 
-
+'''
+lance la 2e map avec tout les sprites et l'affichage 
+Entrée : NULL
+Sortie : NULL
+'''
 def map2():
     background("Image/Moon.webp", 0, 0)
 
@@ -94,10 +142,21 @@ def map2():
     panier_group.draw(window)
     balloon_group.add(ballon)
 
+'''
+lance la 2e map 
+Entrée : NULL
+Sortie : NULL
+'''
 def map2_bis():
     background("Image/Moon.webp", 0, 0)
     game.score_affichage(window)
     panier_group.draw(window)
+
+'''
+lance la 3e map avec tout les sprites et l'affichage 
+Entrée : NULL
+Sortie : NULL
+'''
 def map3():
     background("Image/mars.webp", 0, 0)
 
@@ -109,13 +168,24 @@ def map3():
     panier_group.draw(window)
     balloon_group.add(ballon)
 
+'''
+lance la 3e map
+Entrée : NULL
+Sortie : NULL
+'''
 def map3_bis():
     background("Image/mars.webp", 0, 0)
     game.score_affichage(window)
     panier_group.draw(window)
+
+'''
+Permet de jouer 
+Entrée : NULL
+Sortie : NULL
+'''
 def menu2():
     run = True
-    button_clicked = [False]  # Liste des boutons cliqués
+    button_clicked = [False]
     map1_bouton = pygame.draw.rect(window, (255, 0, 0), pygame.Rect(70, 100, 225, 125))
     map2_bouton = pygame.draw.rect(window, (255, 0, 0), pygame.Rect(515, 100, 225, 125))
     map3_bouton = pygame.draw.rect(window, (255, 0, 0), pygame.Rect(285, 260, 225, 125))
@@ -258,7 +328,7 @@ def menu2():
             game.score =0
             game.chrono = 0
 
-        balloon_group.draw(window) ##
+        balloon_group.draw(window)
         pygame.display.update()
 
 

@@ -12,6 +12,11 @@ class Panier(pygame.sprite.Sprite):
         self.rect.y = random.randint(1, 500)
 
 
+    '''
+    fait apparaître le panier à un position aléatoire
+    Entrée : Class Panier 
+    Sortie : NULL
+    '''
 
     def spawn_panier(self):
         self.rect.x = random.randint(400, 700)
