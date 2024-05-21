@@ -40,8 +40,9 @@ def stopsound():
     mixer.music.stop()
 
 '''
-Permet d'arrêter une musique 
-Entrée : Int, Int 
+Permet de changer le volume de la musique musique 
+Entrée : Int (volume actuel)
+         Int (nouveau volume souhaité : 0 (couper le son) / 1 (augmenter le son de 0.1) / -1 (diminuer le son de 0.1) / 2 (mettre le volume à 0.5))
 Sortie : Int 
 '''
 def volume(vol,new_vol):
