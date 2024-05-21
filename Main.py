@@ -22,7 +22,7 @@ panier = Panier(game)
 
 '''
 Permet de jouer une musique 
-Entrée : fichier mp3
+Entrée : chaine de carcatère (chemin d'accès d'un fichier mp3)
 Sortie : NULL
 '''
 def playsound(songName):
