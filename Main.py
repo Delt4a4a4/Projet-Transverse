@@ -21,7 +21,7 @@ panier_group = pygame.sprite.Group()
 panier = Panier(game)
 
 '''
-Permet de jouer une music 
+Permet de jouer une musique 
 Entrée : fichier mp3
 Sortie : NULL
 '''
@@ -32,7 +32,7 @@ def playsound(songName):
     mixer.music.play()
 
 '''
-Permet d'arrêter une music 
+Permet d'arrêter une musique 
 Entrée : NULL
 Sortie : NULL
 '''
@@ -40,7 +40,7 @@ def stopsound():
     mixer.music.stop()
 
 '''
-Permet d'arrêter une music 
+Permet d'arrêter une musique 
 Entrée : Int, Int 
 Sortie : Int 
 '''
@@ -101,7 +101,7 @@ def victoire ():
     background("Image/victoire.webp", 0, 0)
 
 '''
-lance la 1e map avec tout les sprites et l'affichage 
+Lance la 1ere map avec tout les sprites et l'affichage 
 Entrée : NULL
 Sortie : NULL
 '''
@@ -117,7 +117,7 @@ def map1():
     balloon_group.add(ballon)
 
 '''
-lance la 1e map 
+Lance la 1ere map 
 Entrée : NULL
 Sortie : NULL
 '''
@@ -127,7 +127,7 @@ def map1_bis():
     panier_group.draw(window)
 
 '''
-lance la 2e map avec tout les sprites et l'affichage 
+Lance la 2eme map avec tout les sprites et l'affichage 
 Entrée : NULL
 Sortie : NULL
 '''
@@ -143,7 +143,7 @@ def map2():
     balloon_group.add(ballon)
 
 '''
-lance la 2e map 
+Lance la 2eme map 
 Entrée : NULL
 Sortie : NULL
 '''
@@ -153,7 +153,7 @@ def map2_bis():
     panier_group.draw(window)
 
 '''
-lance la 3e map avec tout les sprites et l'affichage 
+Lance la 3eme map avec tout les sprites et l'affichage 
 Entrée : NULL
 Sortie : NULL
 '''
@@ -169,7 +169,7 @@ def map3():
     balloon_group.add(ballon)
 
 '''
-lance la 3e map
+Lance la 3eme map
 Entrée : NULL
 Sortie : NULL
 '''

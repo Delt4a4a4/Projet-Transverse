@@ -15,7 +15,7 @@ class Game:
         self.chrono = 0
 
     '''
-    permet d'afficher les infos de la partie en haut de l'ecran 
+    Permet d'afficher les infos de la partie en haut de l'écran 
     Entrée : Class Game, Fenêtre
     Sortie : NULL
     '''

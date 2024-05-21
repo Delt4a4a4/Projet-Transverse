@@ -13,7 +13,7 @@ class Panier(pygame.sprite.Sprite):
 
 
     '''
-    fait apparaître le panier à un position aléatoire
+    Fait apparaître le panier à une position aléatoire
     Entrée : Class Panier 
     Sortie : NULL
     '''

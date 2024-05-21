@@ -28,7 +28,7 @@ class Ballon(pygame.sprite.Sprite):
         self.intervalle_temps = 0.25
 
     """
-    calcule et affiche le déplacement du ballon 
+    Calcule et affiche le déplacement du ballon 
     Entrée : Class Ballon
     Sortie : NULL
     """
@@ -68,7 +68,7 @@ class Ballon(pygame.sprite.Sprite):
             clock.tick(60)
 
     """
-    permet de savoir si le ballon touche le panier 
+    Permet de savoir si le ballon touche le panier 
     Entrée : Class Ballon
     Sortie : NULL
     """
