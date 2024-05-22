@@ -7,9 +7,11 @@ from Ballon import Ballon
 from pygame import mixer
 
 map = 0
+token1 = 0
+token2 = 0
+token3 = 0
 pygame.init()
 game = Game()
-fondecran = Fondecran(game)
 window = pygame.display.set_mode((800, 500))
 pygame.display.set_caption("SuperBasketBall ver1.22 474 487 139")
 pygame_icon = pygame.image.load("Image/Ballon.png")
@@ -194,7 +196,7 @@ def menu2():
     background("Image/menu2.png", 0, 0)
     start_time = pygame.time.get_ticks()
     while run:
-        global map
+        global map,token1,token2,token3
 
         elapsed_time = pygame.time.get_ticks() - start_time
         seconds = elapsed_time // 1000
@@ -305,30 +307,39 @@ def menu2():
             game.puissance_game = 60
             game.score =0
             game.chrono = 0
+            token1 = 0
+            token2 = 0
+            token3 = 0
         if game.chrono == 120 and map == 2 and game.score >= 15:
             map3()
             token2 = 1
-            game.score =0
+            game.score = 0
             game.chrono = 0
             game.puissance_game = 60
             map = 3
         elif game.chrono == 120 and map == 2 and game.score < 15:
             main_menu()
             game.puissance_game = 60
-            game.score =0
+            game.score = 0
             game.chrono = 0
+            token1 = 0
+            token2 = 0
+            token3 = 0
+            print(token1 ,token2 ,token3)
         if game.chrono == 180 and map == 3 and game.score >= 20:
             token3 = 1
             if token1 == 1 and token2 == 1 and token3 == 1:
                 victoire()
+            else:
+                main_menu()
         elif game.chrono == 180 and map == 3 and game.score <20 :
             game.puissance_game = 60
-            main_menu()
-
-
-            game.score =0
+            game.score = 0
             game.chrono = 0
-
+            main_menu()
+            token1 = 0
+            token2 = 0
+            token3 = 0
         balloon_group.draw(window)
         pygame.display.update()
 
